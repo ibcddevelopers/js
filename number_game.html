@@ -16,7 +16,8 @@
     </style>
   </head>
   <body>
-    <div style="font-size:1.5em; text-align: center;margin-top:100px">
+
+    <div style="font-size:1.5em; text-align: center;margin-top:100px" id="wrapper">
     Guess a number: <input type="text" id="guess"> <button id="button">Try</button>
   </div>
 
@@ -31,6 +32,7 @@
       var number
       var numberoftries = 0
       var message = document.getElementById('message')
+      var wrapper = document.getElementById('wrapper')
       var resetbutton = document.getElementById('resetbutton')
       resetbutton.className = 'hidden'
       resetbutton.addEventListener('click', (e)=>{
@@ -47,6 +49,7 @@
         guessinput.value = ''
         getRandomNumber()
         resetbutton.className = 'hidden'
+        wrapper.classList.remove('hidden')
       }
       function getRandomNumber(){
         number = Math.floor((Math.random() * 100) + 1)
@@ -77,6 +80,8 @@
           message.innerHTML = 'Congratulations! It took you ' + numberoftries + ' attempts. Play again!'
           message.className = 'green'
           resetbutton.classList.remove('hidden')
+          wrapper.className = 'hidden'
+
         }else if(guess < number){
           var index = Math.floor((Math.random() * higherMessages.length) + 1) - 1
           message.innerHTML = higherMessages[index]
