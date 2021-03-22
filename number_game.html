@@ -22,6 +22,8 @@
   </div>
 
     <script>
+      var higherMessages = ['Nope! Guess higher!', 'Still too low!', 'Come up higher.']
+      var lowerMessages = ['That\'s too high!', 'Guess lower', 'Smaller still.']
       var number
       var message = document.getElementById('message')
       message.innerHTML = 'Guess a number between 1 and 100'
@@ -51,10 +53,12 @@
           message.className = 'green'
           getRandomNumber()
         }else if(guess < number){
-          message.innerHTML = 'Sorry, the number is higher.'
+          var index = Math.floor((Math.random() * higherMessages.length) + 1) - 1
+          message.innerHTML = higherMessages[index]
           message.className = 'red'
         }else{
-          message.innerHTML = 'Sorry, the number is lower.'
+          var index = Math.floor((Math.random() * lowerMessages.length) + 1) - 1
+          message.innerHTML = lowerMessages[index]
           message.className = 'red'
         }
       }
