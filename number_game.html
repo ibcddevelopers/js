@@ -66,6 +66,12 @@
       function checkNumber() {
         numberoftries += 1
         var guess = parseInt(guessinput.value)
+        console.log(guess)
+        if(!guess){
+          message.innerHTML = 'Go back to kindergarten.'
+          message.className = 'red'
+          return;
+        }
 
         if(guess === number){
           message.innerHTML = 'Congratulations! It took you ' + numberoftries + ' attempts. Play again!'
