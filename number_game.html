@@ -2,11 +2,14 @@
   <head>
   </head>
   <body>
-
+    <div style="font-size:1.5em;">
     Guess a number: <input type="text" id="guess"> 
     <button id="button">Try</button>
+  </div>
 
+  <div style="font-size:2em;">
     <div id="message">Guess a number between 1 and 100</div>
+  </div>
 
     <script>
       var number
@@ -18,7 +21,9 @@
       }
 
       var button = document.getElementById('button')
-      button.addEventListener('click', checkNumber())
+      button.addEventListener('click', (e) => {
+        checkNumber()
+      })
       
       function checkNumber() {
         var guess = parseInt(document.getElementById('guess').value)
