@@ -1,24 +1,42 @@
 <html>
   <head>
+    <style>
+      .black {
+        color: black
+      }
+      .green {
+        color: green;
+      }
+      .red {
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <div style="font-size:1.5em;">
-    Guess a number: <input type="text" id="guess"> 
-    <button id="button">Try</button>
+    <div style="font-size:1.5em; text-align: center;margin-top:100px">
+    Guess a number: <input type="text" id="guess"> <button id="button">Try</button>
   </div>
 
-  <div style="font-size:2em;">
-    <div id="message">Guess a number between 1 and 100</div>
+  <div style="font-size:2em;text-align: center; margin-top:100px;">
+    <div id="message" class="black"></div>
   </div>
 
     <script>
       var number
-      getRandomNumber()
       var message = document.getElementById('message')
-
+      message.innerHTML = 'Guess a number between 1 and 100'
+      message.className = 'black'
+      getRandomNumber()
+    
       function getRandomNumber(){
         number = Math.floor((Math.random() * 100) + 1)
       }
+      var guessinput = document.getElementById('guess')
+      guessinput.addEventListener('keyup', (e) => {
+        if(e.keyCode == 13){
+          checkNumber()
+        }
+      })
 
       var button = document.getElementById('button')
       button.addEventListener('click', (e) => {
@@ -26,15 +44,18 @@
       })
       
       function checkNumber() {
-        var guess = parseInt(document.getElementById('guess').value)
+        var guess = parseInt(guessinput.value)
 
         if(guess === number){
           message.innerHTML = 'Congratulations!  Play again!'
+          message.className = 'green'
           getRandomNumber()
         }else if(guess < number){
           message.innerHTML = 'Sorry, the number is higher.'
+          message.className = 'red'
         }else{
           message.innerHTML = 'Sorry, the number is lower.'
+          message.className = 'red'
         }
       }
 
