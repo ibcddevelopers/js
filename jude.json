@@ -1,0 +1,11 @@
+{"Jude":{
+  "book":"Jude",
+  "chapters":[{
+    "chapter":"1",
+    "verses":[{
+      "1":"Jude, the servant of Jesus Christ, and brother of James, to them that are sanctified by God the Father, and preserved in Jesus Christ, and called:"
+      },
+      {"2":"Mercy unto you, and peace, and love, be multiplied."},
+
+  
+kjv['Jude'].chapters[0].verses[1][verse]
