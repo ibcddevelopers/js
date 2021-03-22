@@ -23,7 +23,7 @@ console.log('I am output to the console.')
 //variables('strings')
 //variables('numbers')
 //variables('arrays')
-variables('objects')
+//variables('objects')
 
 
 
