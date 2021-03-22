@@ -3,24 +3,29 @@
   </head>
   <body>
 
-    Guess a number: <input type="text" id="guess"> <button id="button">Try</button>
+    Guess a number: <input type="text" id="guess"> 
+    <button id="button">Try</button>
 
-    <div id="message"></div>
+    <div id="message">Guess a number between 1 and 100</div>
 
     <script>
-      var number = Math.floor((Math.random() * 100) + 1)
+      var number
+      getRandomNumber()
       var message = document.getElementById('message')
 
+      function getRandomNumber(){
+        number = Math.floor((Math.random() * 100) + 1)
+      }
+
       var button = document.getElementById('button')
-      button.addEventListener('click', (e)=>{
-        checkNumber()
-      })
+      button.addEventListener('click', checkNumber())
       
       function checkNumber() {
         var guess = parseInt(document.getElementById('guess').value)
 
         if(guess === number){
-          message.innerHTML = 'Congratulations'
+          message.innerHTML = 'Congratulations!  Play again!'
+          getRandomNumber()
         }else if(guess < number){
           message.innerHTML = 'Sorry, the number is higher.'
         }else{
