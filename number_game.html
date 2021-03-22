@@ -10,6 +10,9 @@
       .red {
         color: red;
       }
+      .hidden {
+        display: none
+      }
     </style>
   </head>
   <body>
@@ -19,17 +22,32 @@
 
   <div style="font-size:2em;text-align: center; margin-top:100px;">
     <div id="message" class="black"></div>
+    <button id="resetbutton">Play again!</button>
   </div>
 
     <script>
       var higherMessages = ['Nope! Guess higher!', 'Still too low!', 'Come up higher.']
       var lowerMessages = ['That\'s too high!', 'Guess lower', 'Smaller still.']
       var number
+      var numberoftries = 0
       var message = document.getElementById('message')
+      var resetbutton = document.getElementById('resetbutton')
+      resetbutton.className = 'hidden'
+      resetbutton.addEventListener('click', (e)=>{
+        reset()
+      })
       message.innerHTML = 'Guess a number between 1 and 100'
       message.className = 'black'
       getRandomNumber()
     
+      function reset () {
+        numberoftries = 0
+        message.innerHTML = 'Guess a number between 1 and 100'
+        message.className = 'black'
+        guessinput.value = ''
+        getRandomNumber()
+        resetbutton.className = 'hidden'
+      }
       function getRandomNumber(){
         number = Math.floor((Math.random() * 100) + 1)
       }
@@ -46,12 +64,13 @@
       })
       
       function checkNumber() {
+        numberoftries += 1
         var guess = parseInt(guessinput.value)
 
         if(guess === number){
-          message.innerHTML = 'Congratulations!  Play again!'
+          message.innerHTML = 'Congratulations! It took you ' + numberoftries + ' attempts. Play again!'
           message.className = 'green'
-          getRandomNumber()
+          resetbutton.classList.remove('hidden')
         }else if(guess < number){
           var index = Math.floor((Math.random() * higherMessages.length) + 1) - 1
           message.innerHTML = higherMessages[index]
