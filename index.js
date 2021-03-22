@@ -22,7 +22,10 @@ console.log('I am output to the console.')
 
 //variables('strings')
 //variables('numbers')
-variables('arrays')
+//variables('arrays')
+variables('objects')
+
+
 
 // VARIABLES
 function variables (type) {
@@ -73,6 +76,22 @@ function variables (type) {
     console.log(strings.shift()) // removes and returns the first item of an array
     strings.unshift('wow') // Adds an item to the beginning of an array
     console.log(strings.join(' - '))
+  }
+
+  var object = {}
+  var object2 = { id: '123', name: 'Elmer'}
+  var objArray = [ { id: '456', name: 'Paolo'}, { id: '789', name: 'Justin'} ]
+
+  if (type === 'objects') {
+    console.log(object)
+    console.log(object2)
+    console.log(object2.id)
+    console.log(object2.name)
+    console.log(objArray[0])
+    console.log(objArray[1])
+    objArray.push(object2)
+    console.log(objArray)
+
   }
   
   
